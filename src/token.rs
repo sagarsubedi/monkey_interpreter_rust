@@ -38,7 +38,7 @@ impl Display for TokenKind {
             TokenKind::Assign => write!(f, "="),
             TokenKind::Plus => write!(f, "+"),
             TokenKind::Comma => write!(f, ","),
-            TokenKind::Semicolon => write!(f, ";"),
+            TokenKind::Semicolon => write!(f, "Semicolon"),
             TokenKind::Lparen => write!(f, "("),
             TokenKind::Rparen => write!(f, ")"),
             TokenKind::Lbrace => write!(f, "{{"),
@@ -46,5 +46,13 @@ impl Display for TokenKind {
             TokenKind::Function => write!(f, "Function"),
             TokenKind::Let => write!(f, "Let"),
         }
+    }
+}
+
+pub fn lookup_ident(identifier: &String) -> TokenKind {
+    match identifier.as_str() {
+        "fn" => TokenKind::Function,
+        "let" => TokenKind::Let,
+        _ => TokenKind::Ident,
     }
 }
