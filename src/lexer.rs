@@ -108,6 +108,36 @@ impl Lexer {
                 self.read_char();
                 tok
             }
+            '-' => {
+                let tok = Lexer::new_token(TokenKind::Minus, self.ch);
+                self.read_char();
+                tok
+            }
+            '*' => {
+                let tok = Lexer::new_token(TokenKind::Asterisk, self.ch);
+                self.read_char();
+                tok
+            }
+            '/' => {
+                let tok = Lexer::new_token(TokenKind::Slash, self.ch);
+                self.read_char();
+                tok
+            }
+            '<' => {
+                let tok = Lexer::new_token(TokenKind::Lt, self.ch);
+                self.read_char();
+                tok
+            }
+            '>' => {
+                let tok = Lexer::new_token(TokenKind::Gt, self.ch);
+                self.read_char();
+                tok
+            }
+            '!' => {
+                let tok = Lexer::new_token(TokenKind::Bang, self.ch);
+                self.read_char();
+                tok
+            }
             '\0' => Token {
                 kind: TokenKind::Eof,
                 literal: "".to_string(),
@@ -154,6 +184,7 @@ mod test {
                 x+y;
             };
             let result = add(five, ten);
+            *+-/<>!;
             "#;
         let expected: Vec<Token> = vec![
             Token {
@@ -295,6 +326,38 @@ mod test {
             Token {
                 kind: TokenKind::Rparen,
                 literal: ")".to_string(),
+            },
+            Token {
+                kind: TokenKind::Semicolon,
+                literal: ";".to_string(),
+            },
+            Token {
+                kind: TokenKind::Asterisk,
+                literal: "*".to_string(),
+            },
+            Token {
+                kind: TokenKind::Plus,
+                literal: "+".to_string(),
+            },
+            Token {
+                kind: TokenKind::Minus,
+                literal: "-".to_string(),
+            },
+            Token {
+                kind: TokenKind::Slash,
+                literal: "/".to_string(),
+            },
+            Token {
+                kind: TokenKind::Lt,
+                literal: "<".to_string(),
+            },
+            Token {
+                kind: TokenKind::Gt,
+                literal: ">".to_string(),
+            },
+            Token {
+                kind: TokenKind::Bang,
+                literal: "!".to_string(),
             },
             Token {
                 kind: TokenKind::Semicolon,
