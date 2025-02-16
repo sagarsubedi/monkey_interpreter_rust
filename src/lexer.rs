@@ -185,6 +185,9 @@ mod test {
             };
             let result = add(five, ten);
             *+-/<>!;
+            if (5<10){
+                return true;
+            } else false
             "#;
         let expected: Vec<Token> = vec![
             Token {
@@ -362,6 +365,58 @@ mod test {
             Token {
                 kind: TokenKind::Semicolon,
                 literal: ";".to_string(),
+            },
+            Token {
+                kind: TokenKind::If,
+                literal: "if".to_string(),
+            },
+            Token {
+                kind: TokenKind::Lparen,
+                literal: "(".to_string(),
+            },
+            Token {
+                kind: TokenKind::Int,
+                literal: "5".to_string(),
+            },
+            Token {
+                kind: TokenKind::Lt,
+                literal: "<".to_string(),
+            },
+            Token {
+                kind: TokenKind::Int,
+                literal: "10".to_string(),
+            },
+            Token {
+                kind: TokenKind::Rparen,
+                literal: ")".to_string(),
+            },
+            Token {
+                kind: TokenKind::Lbrace,
+                literal: "{".to_string(),
+            },
+            Token {
+                kind: TokenKind::Return,
+                literal: "return".to_string(),
+            },
+            Token {
+                kind: TokenKind::True,
+                literal: "true".to_string(),
+            },
+            Token {
+                kind: TokenKind::Semicolon,
+                literal: ";".to_string(),
+            },
+            Token {
+                kind: TokenKind::Rbrace,
+                literal: "}".to_string(),
+            },
+            Token {
+                kind: TokenKind::Else,
+                literal: "else".to_string(),
+            },
+            Token {
+                kind: TokenKind::False,
+                literal: "false".to_string(),
             },
             Token {
                 kind: TokenKind::Eof,
